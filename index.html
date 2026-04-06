@@ -239,25 +239,40 @@
                 <div class="divider"></div>
                 <p>Mặt bằng chi tiết các mẫu nhà Liền kề & Shophouse đẳng cấp.</p>
             </div>
-            <div
-                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1000px; margin: 0 auto;">
-                <div class="text-center animate-fade-up">
-                    <img src="assets/img/mat-bang-mau-l1-lien-ke-shophouse-mipec-to-huu-iconia-lakeside.jpg"
-                        class="shadow-img rounded" alt="Mặt bằng L1" style="border: 1px solid #ddd; padding: 5px;">
-                    <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem; color: var(--primary-color);">Mẫu
-                        thiết kế L1</p>
+            <div class="slider-container" style="position: relative; padding: 0 20px;">
+                <button class="slider-btn prev-btn" id="slide-prev" aria-label="Previous">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                
+                <div class="layout-slider" id="layout-slider-track">
+                    <div class="layout-slide text-center" data-index="0">
+                        <img src="assets/img/mat-bang-mau-l1-lien-ke-shophouse-mipec-to-huu-iconia-lakeside.jpg"
+                            class="shadow-img rounded w-100" alt="Mặt bằng L1" style="border: 1px solid #ddd; padding: 5px; background: white;">
+                        <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem; color: var(--primary-color);">Mẫu
+                            thiết kế L1</p>
+                    </div>
+                    <div class="layout-slide text-center" data-index="1">
+                        <img src="assets/img/mat-bang-mau-c1a-lien-ke-shophouse-mipec-to-huu-iconia-lakeside.jpg"
+                            class="shadow-img rounded w-100" alt="Mặt bằng C1A" style="border: 1px solid #ddd; padding: 5px; background: white;">
+                        <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem; color: var(--primary-color);">Mẫu
+                            thiết kế C1A</p>
+                    </div>
+                    <div class="layout-slide text-center" data-index="2">
+                        <img src="assets/img/mat-bang-l5-lien-ke-shophouse-mipec-to-huu-iconia-lakeside.jpg"
+                            class="shadow-img rounded w-100" alt="Mặt bằng L5" style="border: 1px solid #ddd; padding: 5px; background: white;">
+                        <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem; color: var(--primary-color);">Mẫu
+                            thiết kế L5</p>
+                    </div>
                 </div>
-                <div class="text-center animate-fade-up" style="transition-delay: 0.1s;">
-                    <img src="assets/img/mat-bang-mau-c1a-lien-ke-shophouse-mipec-to-huu-iconia-lakeside.jpg"
-                        class="shadow-img rounded" alt="Mặt bằng C1A" style="border: 1px solid #ddd; padding: 5px;">
-                    <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem; color: var(--primary-color);">Mẫu
-                        thiết kế C1A</p>
-                </div>
-                <div class="text-center animate-fade-up" style="transition-delay: 0.2s;">
-                    <img src="assets/img/mat-bang-l5-lien-ke-shophouse-mipec-to-huu-iconia-lakeside.jpg"
-                        class="shadow-img rounded" alt="Mặt bằng L5" style="border: 1px solid #ddd; padding: 5px;">
-                    <p style="margin-top: 15px; font-weight: 600; font-size: 1.1rem; color: var(--primary-color);">Mẫu
-                        thiết kế L5</p>
+
+                <button class="slider-btn next-btn" id="slide-next" aria-label="Next">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+
+                <div class="slider-dots" id="slider-dots">
+                    <div class="dot active" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                    <div class="dot" data-index="2"></div>
                 </div>
             </div>
         </div>
@@ -355,6 +370,15 @@
                     chuẩn
                     sống thượng lưu mới.</p>
             </div>
+            <div class="footer-col center-desktop">
+                <h4>Liên Kết Nhanh</h4>
+                <ul class="footer-links">
+                    <li><a href="#tong-quan">Tổng quan dự án</a></li>
+                    <li><a href="#vi-tri">Vị trí giao thương</a></li>
+                    <li><a href="#san-pham">Sản phẩm đẳng cấp</a></li>
+                    <li><a href="#tien-ich">Tiện ích 5 sao</a></li>
+                </ul>
+            </div>
             <div class="footer-col">
                 <h4>Liên Hệ Nhận Tư Vấn</h4>
                 <ul>
@@ -363,15 +387,10 @@
                     <!-- <li><strong>Email:</strong> contact@mipecland.com</li> -->
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4>Lưu Ý Pháp Lý</h4>
-                <p class="legal-text">Hình ảnh chỉ mang tính chất minh hoạ. Căn hộ và các trang thiết bị kèm theo Căn hộ
-                    sẽ được bàn giao theo đúng quy định tại Hợp Đồng Mua Bán ký kết. Mọi thông tin dự án có thể được
-                    điều chỉnh mà không cần báo trước.</p>
-            </div>
+
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Mipec Tố Hữu - Iconia Lakeside. Thiết kế Landing Page theo tiêu chuẩn.</p>
+            <p>&copy; 2026 NHÀ Ở NGAY RECO. All rights reserved.</p>
         </div>
     </footer>
 

@@ -577,7 +577,7 @@ img {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1.5fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-bottom: 40px;
 }
@@ -611,6 +611,16 @@ img {
     margin-bottom: 10px;
 }
 
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+}
+
 .legal-text {
     font-size: 0.85rem;
     line-height: 1.8;
@@ -621,6 +631,92 @@ img {
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.9rem;
+}
+
+/* Center Desktop Util */
+.center-desktop {
+    justify-self: center;
+}
+
+/* Slider Controls */
+.slider-container {
+    padding: 0 40px; /* Space for buttons */
+}
+.slider-btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    color: var(--primary-color);
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.slider-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+.prev-btn {
+    left: 0px;
+}
+.next-btn {
+    right: 0px;
+}
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+.slider-dots .dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.slider-dots .dot.active {
+    background: #e53935;
+    transform: scale(1.2);
+}
+
+/* Layout Slider */
+.layout-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px 0;
+    scrollbar-width: none; /* Firefox hide scrollbar */
+}
+
+.layout-slider::-webkit-scrollbar {
+    display: none; /* Chrome/Safari hide scrollbar */
+}
+
+.layout-slide {
+    flex: 0 0 65%;
+    max-width: 700px;
+    scroll-snap-align: center;
+    opacity: 0.4;
+    transform: scale(0.85);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    border-radius: 12px;
+}
+
+.layout-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 /* Floating Actions */
@@ -733,6 +829,17 @@ img {
     .form-row {
         flex-direction: column;
         gap: 15px;
+    }
+
+    .center-desktop {
+        justify-self: start;
+    }
+
+    .layout-slider {
+        gap: 15px;
+    }
+    .layout-slide {
+        flex: 0 0 80%;
     }
 }
 

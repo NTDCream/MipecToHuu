@@ -54,7 +54,83 @@ document.addEventListener("DOMContentLoaded", () => {
     const elementsToAnimate = document.querySelectorAll('.animate-fade-up, .animate-fade-right, .animate-fade-left, .animate-scale');
     elementsToAnimate.forEach(el => observer.observe(el));
 
-    // 4. Form Logic (2-steps and AppScript submission)
+    // 4. Layout Infinity Slider
+    const layoutSlider = document.querySelector('.layout-slider');
+    if (layoutSlider) {
+        const slides = Array.from(layoutSlider.children);
+        // Clone slides for infinity effect (original + 2 sets = 3 sets)
+        slides.forEach(slide => layoutSlider.appendChild(slide.cloneNode(true)));
+        slides.forEach(slide => layoutSlider.appendChild(slide.cloneNode(true)));
+        const dots = document.querySelectorAll('.slider-dots .dot');
+
+        // Add Active Class for Center Mode styling and Update Dots
+        const sliderObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Update dot
+                    const index = entry.target.getAttribute('data-index');
+                    if (index !== null && dots.length > 0) {
+                        dots.forEach(d => d.classList.remove('active'));
+                        const dot = document.querySelector(`.slider-dots .dot[data-index="${index}"]`);
+                        if (dot) dot.classList.add('active');
+                    }
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, {
+            root: layoutSlider,
+            threshold: 0.6
+        });
+
+        Array.from(layoutSlider.children).forEach(slide => sliderObserver.observe(slide));
+
+        // Start in the middle set
+        setTimeout(() => {
+            const itemWidth = layoutSlider.children[0].offsetWidth + 20; // 20 = gap
+            const centerOffset = (layoutSlider.clientWidth - itemWidth) / 2;
+            layoutSlider.scrollLeft = itemWidth * 3 - centerOffset;
+        }, 150);
+
+        // Infinity Loop
+        layoutSlider.addEventListener('scroll', () => {
+             const maxScrollLeft = layoutSlider.scrollWidth - layoutSlider.clientWidth;
+             const third = layoutSlider.scrollWidth / 3;
+             if (layoutSlider.scrollLeft <= 0) {
+                 layoutSlider.scrollLeft = third;
+             } else if (Math.ceil(layoutSlider.scrollLeft) >= maxScrollLeft) {
+                 layoutSlider.scrollLeft = third;
+             }
+        });
+
+        // Arrow Buttons Logic
+        const prevBtn = document.getElementById('slide-prev');
+        const nextBtn = document.getElementById('slide-next');
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                const itemWidth = layoutSlider.children[0].offsetWidth + 20;
+                layoutSlider.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                const itemWidth = layoutSlider.children[0].offsetWidth + 20;
+                layoutSlider.scrollBy({ left: itemWidth, behavior: 'smooth' });
+            });
+        }
+
+        // Dot Navigation Logic
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                const itemWidth = layoutSlider.children[0].offsetWidth + 20;
+                const centerOffset = (layoutSlider.clientWidth - itemWidth) / 2;
+                layoutSlider.scrollTo({ left: itemWidth * (index + 3) - centerOffset, behavior: 'smooth' });
+            });
+        });
+    }
+
+    // 5. Form Logic (2-steps and AppScript submission)
     const form = document.getElementById("register-form");
     const step1 = document.getElementById("step-1");
     const step2 = document.getElementById("step-2");
