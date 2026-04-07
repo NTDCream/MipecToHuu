@@ -95,13 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Infinity Loop
         layoutSlider.addEventListener('scroll', () => {
-             const maxScrollLeft = layoutSlider.scrollWidth - layoutSlider.clientWidth;
-             const third = layoutSlider.scrollWidth / 3;
-             if (layoutSlider.scrollLeft <= 0) {
-                 layoutSlider.scrollLeft = third;
-             } else if (Math.ceil(layoutSlider.scrollLeft) >= maxScrollLeft) {
-                 layoutSlider.scrollLeft = third;
-             }
+            const maxScrollLeft = layoutSlider.scrollWidth - layoutSlider.clientWidth;
+            const third = layoutSlider.scrollWidth / 3;
+            if (layoutSlider.scrollLeft <= 0) {
+                layoutSlider.scrollLeft = third;
+            } else if (Math.ceil(layoutSlider.scrollLeft) >= maxScrollLeft) {
+                layoutSlider.scrollLeft = third;
+            }
         });
 
         // Arrow Buttons Logic
@@ -136,23 +136,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const step2 = document.getElementById("step-2");
     const btnNext = document.getElementById("btn-next-step");
     const btnPrev = document.getElementById("btn-prev-step");
-    const productRadios = document.querySelectorAll(".product-radio");
-    const radioInputs = document.querySelectorAll("input[name='product']");
+    const productCards = document.querySelectorAll(".product-radio");
+    const checkboxInputs = document.querySelectorAll("input[name='product']");
     const btnSubmit = document.getElementById("btn-submit-form");
 
-    // Handle styling for radio selection
-    productRadios.forEach((label, index) => {
+    // Handle styling for checkbox toggle selection
+    productCards.forEach((label, index) => {
         label.addEventListener("click", () => {
-            productRadios.forEach(l => l.classList.remove("active"));
-            label.classList.add("active");
-            radioInputs[index].checked = true;
+            // Toggle: bật/tắt từng card độc lập
+            checkboxInputs[index].checked = !checkboxInputs[index].checked;
+            label.classList.toggle("active", checkboxInputs[index].checked);
         });
     });
 
     btnNext.addEventListener("click", () => {
-        const isSelected = Array.from(radioInputs).some(radio => radio.checked);
+        const isSelected = Array.from(checkboxInputs).some(cb => cb.checked);
         if (!isSelected) {
-            alert("Vui lòng chọn dòng sản phẩm anh/chị quan tâm!");
+            alert("Vui lòng chọn ít nhất một dòng sản phẩm anh/chị quan tâm!");
             return;
         }
         step1.style.display = "none";
@@ -170,20 +170,24 @@ document.addEventListener("DOMContentLoaded", () => {
         btnSubmit.innerText = "ĐANG XỬ LÝ...";
         btnSubmit.disabled = true;
 
-        const product = document.querySelector("input[name='product']:checked").value;
+        // Gom tất cả sản phẩm đã chọn thành chuỗi, phân cách bằng dấu phẩy
+        const selectedProducts = Array.from(checkboxInputs)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value)
+            .join("\n");
         const name = document.getElementById("entry-name").value;
         const phone = document.getElementById("entry-phone").value;
         const email = document.getElementById("entry-email").value;
 
         // IMPORTANT: Replace this URL with your published Web App URL
-        const APPSCRIPT_URL = "https://script.google.com/macros/s/AKfycbz726a44FASEMsAFOV_WbPJWNchoQomfBCyxhzgmlygodD8SwKH6Wr6ZUqCVCZTu8_g7A/exec";
+        const APPSCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwFi3pvgCRzKQLpknlh9HFGxkZCKAk6WcVqimi096NgwLv9F7JuP0H_LOaAeLiAfcqcw/exec";
 
         // Create the form data payload
         let formData = new FormData();
         formData.append("name", name);
         formData.append("email", email);
         formData.append("phone", phone);
-        formData.append("product", product);
+        formData.append("product", selectedProducts);
 
         // Fetch to Google Apps Script. 
         // We use text/plain and no-cors to avoid CORS issues for a simple one-way submit.
@@ -195,7 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(() => {
                 alert("Cảm ơn anh/chị đã đăng ký! Chuyên viên Mipec sẽ liên hệ hỗ trợ trong ít phút nữa.");
                 form.reset();
-                productRadios.forEach(l => l.classList.remove("active"));
+                productCards.forEach(l => l.classList.remove("active"));
+                checkboxInputs.forEach(cb => cb.checked = false);
                 step2.style.display = "none";
                 step1.style.display = "block";
                 btnSubmit.innerText = "HOÀN TẤT ĐĂNG KÝ";
