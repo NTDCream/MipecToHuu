@@ -503,7 +503,7 @@ img {
 
 /* CTA Form */
 .cta-section {
-    background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('assets/img/banner-du-an-mipec-to-huu-iconia-lakeside.webp') no-repeat center center/cover;
+    background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('assets/img/banner-mipec-to-huu-iconia-lakeside.webp') no-repeat center center/cover;
     color: var(--white);
 }
 
@@ -536,6 +536,7 @@ img {
     gap: 20px;
     margin-bottom: 25px;
 }
+
 .product-radio {
     position: relative;
     border: 2px solid #eaeaea;
@@ -547,21 +548,25 @@ img {
     overflow: hidden;
     text-align: center;
 }
+
 .product-radio:hover {
     border-color: var(--secondary-color);
     background: rgba(212, 175, 55, 0.03);
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
+
 .product-radio.active {
     border-color: var(--secondary-color);
     background: rgba(212, 175, 55, 0.05);
     box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
 }
+
 .product-radio.active .check-icon {
     opacity: 1;
     transform: scale(1);
 }
+
 .product-radio .check-icon {
     position: absolute;
     top: 15px;
@@ -578,6 +583,7 @@ img {
     transform: scale(0.5);
     transition: all 0.3s ease;
 }
+
 .product-radio svg.main-icon {
     width: 48px;
     height: 48px;
@@ -585,9 +591,11 @@ img {
     stroke: var(--primary-color);
     transition: all 0.3s ease;
 }
+
 .product-radio.active svg.main-icon {
     stroke: var(--secondary-color);
 }
+
 .product-radio .radio-label {
     font-weight: 600;
     font-size: 1.1rem;
@@ -609,6 +617,7 @@ img {
     justify-content: center;
     gap: 10px;
 }
+
 .btn-premium:hover {
     box-shadow: 0 12px 25px rgba(212, 175, 55, 0.4);
     transform: translateY(-2px);
@@ -715,8 +724,10 @@ img {
 
 /* Slider Controls */
 .slider-container {
-    padding: 0 40px; /* Space for buttons */
+    padding: 0 40px;
+    /* Space for buttons */
 }
+
 .slider-btn {
     position: absolute;
     top: 40%;
@@ -729,28 +740,33 @@ img {
     color: var(--primary-color);
     cursor: pointer;
     z-index: 10;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
 }
+
 .slider-btn:hover {
     background: var(--secondary-color);
     color: white;
 }
+
 .prev-btn {
     left: 0px;
 }
+
 .next-btn {
     right: 0px;
 }
+
 .slider-dots {
     display: flex;
     justify-content: center;
     gap: 8px;
     margin-top: 15px;
 }
+
 .slider-dots .dot {
     width: 10px;
     height: 10px;
@@ -759,6 +775,7 @@ img {
     cursor: pointer;
     transition: var(--transition);
 }
+
 .slider-dots .dot.active {
     background: #e53935;
     transform: scale(1.2);
@@ -771,11 +788,13 @@ img {
     scroll-snap-type: x mandatory;
     gap: 20px;
     padding: 20px 0;
-    scrollbar-width: none; /* Firefox hide scrollbar */
+    scrollbar-width: none;
+    /* Firefox hide scrollbar */
 }
 
 .layout-slider::-webkit-scrollbar {
-    display: none; /* Chrome/Safari hide scrollbar */
+    display: none;
+    /* Chrome/Safari hide scrollbar */
 }
 
 .layout-slide {
@@ -791,7 +810,7 @@ img {
 .layout-slide.active {
     opacity: 1;
     transform: scale(1);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Floating Actions */
@@ -913,6 +932,7 @@ img {
     .layout-slider {
         gap: 15px;
     }
+
     .layout-slide {
         flex: 0 0 80%;
     }
