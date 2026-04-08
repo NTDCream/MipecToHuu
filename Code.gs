@@ -53,7 +53,7 @@ function doPost(e) {
                     "✉️ Email: " + (e.parameter.email ? e.parameter.email : "Không cung cấp") + "\n" +
                     "🏢 Sản phẩm quan tâm: " + e.parameter.product + "\n" +
                     "⏱ Thời gian đăng ký: " + timestamp + "\n\n" +
-                    "📋 Xem danh sách khách hàng: " + "LINK_GOOGLE_SHEET_CUA_BAN" + "\n" +
+                    "📋 Xem danh sách khách hàng: " + "https://docs.google.com/spreadsheets/d/1hMIs6NKT_fxzfU69L5nuSbpnqdrp3PUYwYpbdI3_cuM/edit?gid=0#gid=0" + "\n" +
                     "Hãy nhanh chóng liên hệ với khách để hỗ trợ tốt nhất!";
                     
     MailApp.sendEmail({
