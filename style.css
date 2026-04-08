@@ -461,6 +461,12 @@ img {
     gap: 20px;
 }
 
+.gallery-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
 .gallery-grid img {
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -908,6 +914,7 @@ img {
     .features-grid,
     .product-wrap,
     .masonry-gallery,
+    .gallery-grid-2,
     .footer-content {
         grid-template-columns: 1fr;
     }
@@ -959,6 +966,10 @@ img {
 
     .cta-box {
         padding: 30px 20px;
+    }
+
+    .map-container {
+        height: 320px !important;
     }
 }
 
