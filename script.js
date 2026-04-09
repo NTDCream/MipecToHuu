@@ -247,4 +247,38 @@ document.addEventListener("DOMContentLoaded", () => {
             lightbox.style.display = "none";
         }
     });
+
+    // 6. Apartment Accordion Logic
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const panelId = header.getAttribute('aria-controls');
+            const panel = document.getElementById(panelId);
+            const isExpanded = header.getAttribute('aria-expanded') === 'true';
+
+            // Close all other panels
+            accordionHeaders.forEach(otherHeader => {
+                if (otherHeader !== header) {
+                    const otherId = otherHeader.getAttribute('aria-controls');
+                    const otherPanel = document.getElementById(otherId);
+                    otherHeader.setAttribute('aria-expanded', 'false');
+                    if (otherPanel) otherPanel.classList.remove('open');
+                }
+            });
+
+            // Toggle current
+            if (isExpanded) {
+                header.setAttribute('aria-expanded', 'false');
+                panel.classList.remove('open');
+            } else {
+                header.setAttribute('aria-expanded', 'true');
+                panel.classList.add('open');
+                // Smooth scroll to header after short delay
+                setTimeout(() => {
+                    header.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        });
+    });
 });
