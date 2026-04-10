@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".lightbox-close");
 
     // Select all standard images to enlarge
-    const images = document.querySelectorAll("img:not(.zalo-btn img)");
+    const images = document.querySelectorAll("img:not(.zalo-btn img):not(.brand-logo):not(.footer-brand-logo)");
 
     images.forEach(img => {
         img.addEventListener("click", function () {
