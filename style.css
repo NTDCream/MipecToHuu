@@ -1107,9 +1107,7 @@ img {
     align-items: center;
     justify-content: center;
     min-height: 240px;
-    padding: 16px;
-    background: var(--white);
-    border-radius: 10px;
+    padding: 10px 0;
 }
 
 .acc-img {
@@ -1118,12 +1116,14 @@ img {
     object-fit: contain;
     border-radius: 8px;
     display: block;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: zoom-in;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 .acc-img:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
 }
 
 
